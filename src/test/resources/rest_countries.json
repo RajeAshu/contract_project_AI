@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["objects", "meta"],
+      "properties": {
+        "objects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["names", "region"],
+            "properties": {
+              "names": {
+                "type": "object",
+                "required": ["common"],
+                "properties": {
+                  "common": { "type": "string" }
+                }
+              },
+              "capitals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name"],
+                  "properties": {
+                    "name": { "type": "string" }
+                  }
+                }
+              },
+              "area": {
+                "type": "object",
+                "properties": {
+                  "kilometers": { "type": "number" }
+                }
+              },
+              "currencies": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["code"],
+                  "properties": {
+                    "code": { "type": "string", "pattern": "^[A-Z]{3}$" },
+                    "name": { "type": "string" }
+                  }
+                }
+              },
+              "region": {
+                "type": "string",
+                "enum": ["Africa", "Americas", "Asia", "Europe", "Oceania", "Antarctic"]
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "more": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}
